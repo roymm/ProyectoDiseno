@@ -4,5 +4,6 @@ public enum AccessLevel {
     VIP,
     CommonArea,
     Maintenance,
-    ReservationArea
+    ReservationArea,
+    Room
 }
