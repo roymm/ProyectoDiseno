@@ -12,6 +12,6 @@ public class CardMaintenanceArea extends AccessCardDecorator{
     //Decorates the canAccess method of the wrapped AccessCard with access to maintenance Areas
     @Override
     public boolean canAccess(Place place){
-        return this.wrappedAccessCard.canAccess(place) && place.getAccessLevel() == AccessLevel.Maintenance;
+        return this.wrappedAccessCard.canAccess(place) || place.getAccessLevel() == AccessLevel.Maintenance;
     }
 }

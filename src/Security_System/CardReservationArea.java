@@ -12,6 +12,6 @@ public class CardReservationArea extends AccessCardDecorator{
     //Decorates the canAccess method of the wrapped AccessCard with access to Reservation Areas
     @Override
     public boolean canAccess(Place place){
-        return this.wrappedAccessCard.canAccess(place) && place.getAccessLevel() == AccessLevel.ReservationArea;
+        return this.wrappedAccessCard.canAccess(place) || place.getAccessLevel() == AccessLevel.ReservationArea;
     }
 }
