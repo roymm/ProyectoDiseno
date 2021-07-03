@@ -1,7 +1,7 @@
 package Security_System;
 
 /* Represents an access card that can enter the VIP areas and
-the areas that the wrapped card from the super class can enter
+the areas that the wrapped card can enter
 */
 public class CardVIP extends AccessCardDecorator{
 
