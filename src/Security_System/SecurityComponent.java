@@ -1,8 +1,16 @@
 package Security_System;
 
-import javax.swing.text.Position;
+public abstract class SecurityComponent {
+    private final int id;
 
-public interface SecurityComponent {
-    void changePosition(Position position);
-    SecurityComponent identifyUser(int id);
+    public int getId() {
+        return id;
+    }
+
+    SecurityComponent(int id){
+        this.id = id;
+    }
+
+    abstract void changePosition(Position position);
+    abstract SecurityComponent identifyUser(int id);
 }

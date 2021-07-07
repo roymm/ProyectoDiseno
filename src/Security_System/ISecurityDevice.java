@@ -1,14 +1,19 @@
 package Security_System;
 
-import javax.swing.text.Position;
-
-public abstract class ISecurityDevice implements SecurityComponent{
-    protected int deviceID;
+public abstract class ISecurityDevice extends SecurityComponent{
     protected Position position;
+
+    ISecurityDevice(int id) {
+        super(id);
+    }
 
     @Override
     public void changePosition(Position position){
         this.position = position;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     @Override
