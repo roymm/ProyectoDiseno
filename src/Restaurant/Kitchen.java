@@ -13,10 +13,14 @@ public class Kitchen{
     private Bread bread;
     private Meat meat;
     private List<Extra> extras = new ArrayList<Extra>();
+    private String type;
+    private double price;
 
 
     public Sandwich create(){
-        return new Sandwich(bread, meat, extras.toArray(new Extra[extras.size()]));
+        Sandwich sandwich = new Sandwich(type, bread, meat, extras.toArray(new Extra[extras.size()]));
+        sandwich.setPrice(this.price);
+        return sandwich;
     }
 
 
@@ -25,6 +29,8 @@ public class Kitchen{
         kitchen.bread = prototype.getBread();
         kitchen.meat = prototype.getMeat();
         kitchen.extras.addAll(prototype.getExtras());
+        kitchen.type = prototype.getType();
+        kitchen.price = prototype.getPrice();
         return kitchen;
     }
 
@@ -48,13 +54,20 @@ public class Kitchen{
         return this;
     }
 
-    public Kitchen addExtra(Extra extra){
-        this.extra.add(extra);
+    public Kitchen addTomato(){
+        this.extras.add(Extra.TOMATO);
+        this.price += 0.50;
+        return this;        
+    }
+
+    public Kitchen addCheese(){
+        this.extras.add(Extra.CHEESE);
+        this.price += 0.75;
         return this;
     }
 
     public Kitchen removeExtra(Extra extra){
-        this.extras.remove(extras);
+        this.extras.remove(extra);
         return this;
     }
 
@@ -62,13 +75,15 @@ public class Kitchen{
     //Sandwiches on the menu
 
     public static Sandwich Mexican(){
-        return new Sandwich(Bread.TORTA, Meat.CARNITAS);
+        Sandwich mexican = new Sandwich("Mexican",Bread.TORTA, Meat.CARNITAS);
+        mexican.setPrice(5.00);
+        return mexican;
     }
 
     public static Sandwich Italian(){
-        return new Sandwich(Bread.CIABATTA, Meat.SALAMI);
+        Sandwich italian = new Sandwich("Italian",Bread.CIABATTA, Meat.SALAMI);
+        italian.setPrice(6.00);
+        return italian;
     }
     
-
-
 }
