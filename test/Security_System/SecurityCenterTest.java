@@ -4,86 +4,109 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SecurityCenterTest {
-    SecurityCenter securityCenter;
-    DeviceCollection evenCamerasCollection;
-    DeviceCollection oddCamerasCollection;
+    private final int NUM_CAMERAS = 10;
+    private final int NUM_CAMERA_GROUPS = 2;
+    private final int NUM_PEOPLE = 100;
+
+    private SecurityCenter securityCenter = new SecurityCenter();
+    List<Person> people = new ArrayList<>(NUM_PEOPLE);
+    List<Camera> securityComponents = new ArrayList<>(NUM_CAMERAS);
+    List<DeviceCollection> deviceCollections = new ArrayList<>(NUM_CAMERA_GROUPS);
 
     @BeforeEach
     void init(){
-        securityCenter = new SecurityCenter();
-        Person person1 = new Person(1);
-        Person person2 = new Person(2);
-        Person person3 = new Person(3);
-        Person person4 = new Person(4);
 
-        List<Person> listEvenPerson = new ArrayList<>();
-        List<Person> listOddPerson = new ArrayList<>();
+        for (int i = 0; i < NUM_CAMERAS; i++){
+            Camera testCamera = new Camera(i);
+            securityComponents.add(testCamera);
+        }
 
-        listEvenPerson.add(person2);
-        listEvenPerson.add(person4);
-        listOddPerson.add(person1);
-        listOddPerson.add(person3);
+        for (int i = 0; i < NUM_PEOPLE; i++){
+            Person person = new Person(i);
+            people.add(person);
+            securityComponents.get(i % NUM_CAMERAS).addIdentifiedPerson(person);
+        }
 
-        SecurityComponent camera1 = new Camera(1,listOddPerson);
-        SecurityComponent camera2 = new Camera(2,listEvenPerson);
-        SecurityComponent camera3 = new Camera(3,listOddPerson);
-        SecurityComponent camera4 = new Camera(4,listEvenPerson);
+        for(int i = 0; i < NUM_CAMERA_GROUPS; i++){
+            DeviceCollection deviceCollection = new DeviceCollection(NUM_CAMERAS+(i+1));
+            deviceCollections.add(deviceCollection);
+        }
 
-        evenCamerasCollection = new DeviceCollection(10);
-        oddCamerasCollection = new DeviceCollection(11);
-
-        List<SecurityComponent> evenCamerasList = new LinkedList<>();
-        evenCamerasList.add(camera2);
-        evenCamerasList.add(camera4);
-        evenCamerasCollection.setChildren(evenCamerasList);
-
-        List<SecurityComponent> oddCamerasList = new LinkedList<>();
-        evenCamerasList.add(camera1);
-        evenCamerasList.add(camera3);
-        oddCamerasCollection.setChildren(oddCamerasList);
+        for(int i = 0; i < NUM_CAMERAS; i++){
+            deviceCollections.get(i % NUM_CAMERA_GROUPS).addChild(securityComponents.get(i));
+        }
 
     }
 
     @Test
     void registerComponent() {
-        securityCenter.registerComponent(evenCamerasCollection);
-        securityCenter.registerComponent(oddCamerasCollection);
+        for(SecurityComponent securityComponent : deviceCollections){
+            securityCenter.registerComponent(securityComponent);
+        }
 
-        assertTrue(securityCenter.getSubscribers().contains(evenCamerasCollection));
-        assertTrue(securityCenter.getSubscribers().contains(oddCamerasCollection));
-
+        assertEquals(securityCenter.getSubscribers().size(),NUM_CAMERA_GROUPS);
     }
 
     @Test
     void deleteComponent() {
-        SecurityCenter securityCenter = new SecurityCenter();
-        securityCenter.registerComponent(evenCamerasCollection);
-        securityCenter.registerComponent(oddCamerasCollection);
+        registerComponent();
 
-        securityCenter.deleteComponent(oddCamerasCollection);
+        securityCenter.deleteComponent(deviceCollections.get(0));
+        assertEquals(NUM_CAMERA_GROUPS - 1, securityCenter.getSubscribers().size());
+    }
 
-        assertTrue(securityCenter.getSubscribers().contains(evenCamerasCollection));
-        assertEquals(1, securityCenter.getSubscribers().size());
+    @Test
+    void deleteAllComponent() {
+        registerComponent();
+
+        for(SecurityComponent securityComponent : deviceCollections){
+            securityCenter.deleteComponent(securityComponent);
+        }
+        assertEquals(0,securityCenter.getSubscribers().size());
     }
 
     @Test
     void identifyPerson() {
-        securityCenter.registerComponent(evenCamerasCollection);
-        assertNotNull(securityCenter.identifyPerson(2));
+        registerComponent();
+        SecurityComponent cameraSeeingPerson = securityCenter.identifyPerson(people.get(0).getIdNumber());
+        SecurityComponent expectedCamera = securityComponents.get(0);
+        assertEquals(expectedCamera,cameraSeeingPerson);
     }
 
     @Test
-    void changePosition() {
-        ISecurityDevice camera5 = new Camera(5,null);
-        securityCenter.registerComponent(camera5);
-        securityCenter.changePosition(Position.CENTER,5);
-        assertEquals(Position.CENTER,camera5.getPosition());
+    void identifyAllPeople() {
+        registerComponent();
+
+        for (Person person : people){
+            assertNotNull(securityCenter.identifyPerson(person.getIdNumber()));
+        }
 
     }
+
+    @Test
+    void changeCameraPosition() {
+        registerComponent();
+
+        securityCenter.changePosition(Position.LEFT,securityComponents.get(0).getId());
+
+        assertEquals(securityComponents.get(0).position, Position.LEFT);
+    }
+
+    @Test
+    void changeCollectionPosition() {
+        registerComponent();
+
+        securityCenter.changePosition(Position.CENTER,deviceCollections.get(0).getId());
+
+        for(int i = 0; i < deviceCollections.get(0).getChildren().size(); i++){
+            ISecurityDevice camera = (ISecurityDevice) deviceCollections.get(0).getChildren().get(i);
+            assertEquals(camera.getPosition(), Position.CENTER);
+        }
+    }
+
 }
