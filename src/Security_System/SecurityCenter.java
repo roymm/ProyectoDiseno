@@ -25,8 +25,11 @@ public class SecurityCenter {
     public SecurityComponent identifyPerson(int idNumber){
         for (SecurityComponent subscriber :
                 subscribers) {
-            if(subscriber.identifyUser(idNumber) != null){
-                return subscriber;
+
+            SecurityComponent componentSeeingPerson = subscriber.identifyUser(idNumber);
+
+            if(componentSeeingPerson != null){
+                return componentSeeingPerson;
             }
         }
         return null;
@@ -34,9 +37,7 @@ public class SecurityCenter {
 
     public void changePosition(Position position, int id){
         for (SecurityComponent subscriber: subscribers) {
-            if(subscriber.getId() == id){
-                subscriber.changePosition(position);
-            }
+            subscriber.changePosition(id,position);
         }
     }
 }

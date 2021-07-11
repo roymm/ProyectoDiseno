@@ -8,8 +8,10 @@ public abstract class ISecurityDevice extends SecurityComponent{
     }
 
     @Override
-    public void changePosition(Position position){
-        this.position = position;
+    public void changePosition(int id, Position position){
+        if(id == super.getId()){
+            this.position = position;
+        }
     }
 
     public Position getPosition() {

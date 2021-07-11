@@ -1,5 +1,6 @@
 package Security_System;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class DeviceCollection extends SecurityComponent {
@@ -7,12 +8,20 @@ public class DeviceCollection extends SecurityComponent {
 
     DeviceCollection(int id) {
         super(id);
+        children = new LinkedList<>();
     }
 
     @Override
-    public void changePosition(Position position) {
-        for (SecurityComponent child : children) {
-            child.changePosition(position);
+    public void changePosition(int id, Position position) {
+        if(id == super.getId()){
+            for (SecurityComponent child : children) {
+                child.changePosition(child.getId(),position);
+            }
+        }
+        else {
+            for (SecurityComponent child : children) {
+                child.changePosition(id, position);
+            }
         }
     }
 
@@ -24,6 +33,10 @@ public class DeviceCollection extends SecurityComponent {
             }
         }
         return null;
+    }
+
+    public void addChild(SecurityComponent child){
+        children.add(child);
     }
 
     public void setChildren(List<SecurityComponent> children) {
