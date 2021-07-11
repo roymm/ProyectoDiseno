@@ -11,6 +11,6 @@ public abstract class SecurityComponent {
         this.id = id;
     }
 
-    abstract void changePosition(Position position);
+    abstract void changePosition(int id, Position position);
     abstract SecurityComponent identifyUser(int id);
 }
