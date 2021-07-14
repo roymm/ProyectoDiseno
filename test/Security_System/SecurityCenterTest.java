@@ -14,9 +14,9 @@ class SecurityCenterTest {
     private final int NUM_PEOPLE = 100;
 
     private SecurityCenter securityCenter = new SecurityCenter();
-    List<Person> people = new ArrayList<>(NUM_PEOPLE);
-    List<Camera> securityComponents = new ArrayList<>(NUM_CAMERAS);
-    List<DeviceCollection> deviceCollections = new ArrayList<>(NUM_CAMERA_GROUPS);
+    private List<Person> people = new ArrayList<>(NUM_PEOPLE);
+    private List<Camera> securityComponents = new ArrayList<>(NUM_CAMERAS);
+    private List<DeviceCollection> deviceCollections = new ArrayList<>(NUM_CAMERA_GROUPS);
 
     @BeforeEach
     void init(){
