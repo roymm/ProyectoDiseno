@@ -3,39 +3,55 @@ package homeautomationsystem;
 import homeautomationsystem.FactoryMethod.rooms.Room;
 import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
 import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
+import homeautomationsystem.FactoryMethod.smartdevices.concretefactories.BulbActuatorFactory;
 import homeautomationsystem.FactoryMethod.smartdevices.concretefactories.LightSensorFactory;
+import homeautomationsystem.Mediator.Mediator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-//    SmartDevice lightSensor;
-//    SmartDevice noiseSensor;
-//    SmartDevice movementSensor;
-//
-//    SmartDevice bulbActuator;
-//    SmartDevice doorActuator;
-//    SmartDevice speakerActuator;
-
     private static final int MAX_SENSORS = 3;
     private static final int MAX_ACTUATORS = 3;
 
-    private static final List<SmartDevice> sensors = new ArrayList<>();
-    private static final List<SmartDevice> actuators = new ArrayList<>();
+    public static void main(String[] args) throws Exception {
 
+         List<SmartDevice> lightSensorList = new ArrayList<>();
+         List<SmartDevice> noiseSensorList = new ArrayList<>();
+         List<SmartDevice> movementSensorList = new ArrayList<>();
 
-    public static void main(String[] args) {
+         List<SmartDevice> bulbActuatorList = new ArrayList<>();
+         List<SmartDevice> doorActuatorList = new ArrayList<>();
+         List<SmartDevice> speakerActuatorList = new ArrayList<>();
 
-        SmartDeviceFactory factory = new LightSensorFactory();
+        SmartDeviceFactory factory;
+
+        // Creates light sensor.
+        factory = new LightSensorFactory();
         SmartDevice lightSensor = factory.create();
 
-        boolean x = lightSensor.ponerMandos();
+        // Creates bulb actuator.
+        factory = new BulbActuatorFactory();
+        SmartDevice bulb = factory.create();
 
+        // Creates room.
+        Room kitchen = new Room(0, "cocina");
 
-        Room kitchen = new Room(1, "kitchen 1", sensors, actuators);
+        // Adds smart devices to the respective lists.
+        lightSensorList.add(lightSensor);
+        bulbActuatorList.add(bulb);
 
-        System.out.println(kitchen.getSensors().size());
+        Mediator mediator = new Mediator(lightSensorList, bulbActuatorList);
+
+        // Sets the context for a room.
+        lightSensor.setContext(mediator);
+        bulb.setContext(mediator);
+        kitchen.setContext(mediator);
+
+        kitchen.turnRoomLight();
+
+        bulbActuatorList.size();
 
     }
 }
