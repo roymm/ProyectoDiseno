@@ -7,20 +7,16 @@ public class LightSensor extends SmartDevice {
 
     boolean isTurnedOn;
 
-
-
-    public void turnOn() {}
-
     public void turnOff() {}
 
     public boolean isTurnedOn() {
         return isTurnedOn;
     }
 
-//    @Override
-//    public boolean ponerMandos() {
-//        super.ponerMandos();
-//
-//        return false;
-//    }
+    @Override
+    public boolean turnOn() {
+        super.turnOn();
+
+        return true;
+    }
 }

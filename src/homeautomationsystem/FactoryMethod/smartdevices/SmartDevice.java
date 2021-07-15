@@ -1,18 +1,18 @@
 package homeautomationsystem.FactoryMethod.smartdevices;
 
+import homeautomationsystem.Mediator.Mediator;
+
 public abstract class SmartDevice  {
 
-    protected boolean tieneTambor;
-    protected boolean tieneMandos;
-    protected String  tipoCarga;
+    protected boolean smartDeviceOn;
+    Mediator context;
 
-    public void ponerTambor() {
-        tieneTambor = true;
+    public void setContext(Mediator context) {
+        this.context = context;
     }
 
-    public boolean ponerMandos() {
-        tieneMandos = true;
-        return tieneMandos;
+    public boolean turnOn() {
+        smartDeviceOn = true;
+        return smartDeviceOn;
     }
-
 }

@@ -2,33 +2,38 @@ package homeautomationsystem.Mediator;
 
 import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
 
+import java.util.List;
+
 public class Mediator {
 
-    private SmartDevice lightSensor;
-    private SmartDevice noiseSensor;
-    private SmartDevice movementSensor;
+    private List<SmartDevice> lightSensor;
+    private List<SmartDevice> noiseSensor;
+    private List<SmartDevice> movementSensor;
 
-    private SmartDevice bulbActuator;
-    private SmartDevice doorActuator;
-    private SmartDevice speakerActuator;
+    private List<SmartDevice> bulbActuator;
+    private List<SmartDevice> doorActuator;
+    private List<SmartDevice> speakerActuator;
 
-    public Mediator(SmartDevice lightSensor, SmartDevice noiseSensor, SmartDevice movementSensor,
-                    SmartDevice bulbActuator, SmartDevice doorActuator, SmartDevice speakerActuator) {
+    public Mediator(List<SmartDevice> lightSensor, List<SmartDevice> noiseSensor, List<SmartDevice> movementSensor,
+                    List<SmartDevice> bulbActuator, List<SmartDevice> doorActuator, List<SmartDevice> speakerActuator) {
         this.lightSensor = lightSensor;
-        this.noiseSensor = noiseSensor;
-        this.movementSensor = movementSensor;
         this.bulbActuator = bulbActuator;
-        this.doorActuator = doorActuator;
-        this.speakerActuator = speakerActuator;
     }
 
-//    private void openDoor() {
-//        doorActuator
-//    }
-//
-//    private void closeDoor() {
-//        doorActuator.closeDoor();
-//    }
+    public Mediator(List<SmartDevice> lightSensor, List<SmartDevice> bulbActuator) {
+        this.lightSensor = lightSensor;
+        this.bulbActuator = bulbActuator;
+    }
 
+    public void turnLightActuator(int index) throws Exception {
+        try{
+            bulbActuator.get(index).turnOn();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void turnLightSensor(int index) {
+        lightSensor.get(index).turnOn();
+    }
 }
