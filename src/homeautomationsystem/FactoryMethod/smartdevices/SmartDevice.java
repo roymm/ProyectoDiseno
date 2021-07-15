@@ -12,7 +12,7 @@ public abstract class SmartDevice  {
     }
 
     public boolean turnOn() {
-        smartDeviceOn = true;
+        this.smartDeviceOn = true;
         return smartDeviceOn;
     }
 }
