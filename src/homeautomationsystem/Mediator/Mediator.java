@@ -27,13 +27,13 @@ public class Mediator {
 
     public void turnLightActuator(int index) throws Exception {
         try{
-            bulbActuator.get(index).turnOn();
+            this.bulbActuator.get(index).turnOn();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void turnLightSensor(int index) {
-        lightSensor.get(index).turnOn();
+        this.lightSensor.get(index).turnOn();
     }
 }
