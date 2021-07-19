@@ -13,7 +13,7 @@ public class Register {
     }
 
     public Order getOrder(){
-        this.order;
+        return this.order;
     }
 
     public void makeNewOrder(){
@@ -29,7 +29,7 @@ public class Register {
     }
 
     public void finishOrder(){
-        String total = getTotal();
+        String total = generateReceipt();
         this.order.setReceipt(total);
         
         System.out.println(this.order.getReceipt());
@@ -37,7 +37,7 @@ public class Register {
         this.order = null;
     }
 
-    public String getTotal(){
+    public String generateReceipt(){
         String items = "";
         double totalPrice = 0.0;
         for(Sandwich sandwichTemp: this.order.getSandwiches()){
@@ -45,6 +45,14 @@ public class Register {
             totalPrice += sandwichTemp.getPrice();
         }
         return items + "Total:\t" + totalPrice + "\n";
+    }
+    
+    public double getTotalPrice(){
+    	double totalPrice = 0.0;
+        for(Sandwich sandwichTemp: this.order.getSandwiches()){
+        	totalPrice += sandwichTemp.getPrice();
+        }
+        return totalPrice;
     }
 
 }
