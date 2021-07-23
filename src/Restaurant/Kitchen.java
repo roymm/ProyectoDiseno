@@ -24,6 +24,12 @@ public class Kitchen{
     }
 
 
+    /*
+     * Purpose: Constructs a kitchen with the attributes specified in the Sandwich prototype
+     * for copying.
+     * Input: The Sandwich object which is going to be used as a prototype
+     * Output: the Kitchen with all the ingredients of the sandwich that wants to be copied
+     */
     public static Kitchen from(Sandwich prototype){
         Kitchen kitchen = new Kitchen();
         kitchen.bread = prototype.getBread();
@@ -34,6 +40,7 @@ public class Kitchen{
         return kitchen;
     }
 
+    //Sandwich handling methods
     public Kitchen setBread(Bread bread){
         this.bread = bread;
         return this;
@@ -72,14 +79,24 @@ public class Kitchen{
     }
 
 
-    //Sandwiches on the menu
+    //Sandwiches on the menu: Prototypes
 
+    /*
+     * Purpose: Constructs a Sandwich with the 'Mexican' ingredients: TORTA, CARNITAS
+     * Input: -
+     * Output: Sandwich mexican which contains the ingredients of a Mexican type sandwich.
+     */
     public static Sandwich Mexican(){
         Sandwich mexican = new Sandwich("Mexican",Bread.TORTA, Meat.CARNITAS);
         mexican.setPrice(5.00);
         return mexican;
     }
 
+    /*
+     * Purpose: Constructs a Sandwich with the 'Italian' ingredients: CIABATTA, SALAMI
+     * Input: -
+     * Output: Sandwich italian which contains the ingredients of a Italian type sandwich.
+     */
     public static Sandwich Italian(){
         Sandwich italian = new Sandwich("Italian",Bread.CIABATTA, Meat.SALAMI);
         italian.setPrice(6.00);

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Register {
 
-    private Order order;
-    private ArrayList<Order> orderLog;
+    private Order order; //The order being worked on at the moment
+    private ArrayList<Order> orderLog; //The orderLog works as an archive of all the orders placed
 
     public Register(){
         this.order = null;
@@ -28,6 +28,12 @@ public class Register {
         this.order.undoOrder();
     }
 
+     /*
+     * Purpose: Finishes an order and adds it to the orderLog to keep track of it. A "finished" order
+     * cannot be modified.
+     * Input: -
+     * Output: -
+     */
     public void finishOrder(){
         String total = generateReceipt();
         this.order.setReceipt(total);
@@ -37,6 +43,12 @@ public class Register {
         this.order = null;
     }
 
+     /*
+     * Purpose: Generates a receipt of the current order. This receipt includes the sandwiches ordered,
+     * their individual prices and the total cost.
+     * Input: -
+     * Output:
+     */
     public String generateReceipt(){
         String items = "";
         double totalPrice = 0.0;

@@ -5,7 +5,7 @@ public class Order {
 
     private String receipt;
     private ArrayList<Sandwich> sandwiches;
-    private Memento memento;
+    private Memento memento; //Memento attribute allows the order to undo the last sandwich ordered
 
     public Order(){
         this.receipt = "";
@@ -13,7 +13,6 @@ public class Order {
         this.memento = new Memento();
     }
 
-    //Getters and Setters for all atributtes
     public String getReceipt() {
         return receipt;
     }
@@ -33,15 +32,24 @@ public class Order {
         }
     }
 
+    /*
+     * Purpose: Adds a sandwich to the current order
+     * Input: a Sandwich object that is going to be ordered
+     * Output: -
+     */
     public void addOrder(Sandwich sandwich){
-        //Make a get for the Sandwich's attributes
         this.receipt += sandwich.toString() + "\t\n";
-        // System.out.println(receipt);
         this.sandwiches.add(sandwich);
         this.saveOrder();
     }
 
     //Memento's handling methods
+
+    /*
+     * Purpose: Saves the current state of the order as a copy into the memento object
+     * Input: -
+     * Output: -
+     */
     public void saveOrder(){
         Order orderCopy = new Order();
         orderCopy.setReceipt(this.receipt);
@@ -49,6 +57,12 @@ public class Order {
         this.memento.saveOrder(orderCopy); //Saves the current state using memento
     }
 
+    /*
+     * Purpose: The memento object or 'snapshot' of the order is used to undo the last
+     * sandwich placed for this particular order.
+     * Input: -
+     * Output: -
+     */
     public void undoOrder(){
         Order previousOrder = this.memento.undoOrder();
         
