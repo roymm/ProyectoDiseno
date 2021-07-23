@@ -1,4 +1,4 @@
-package Security_System;
+package Elevator;
 
 public class Dummie {
 
