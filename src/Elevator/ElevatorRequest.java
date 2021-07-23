@@ -1,10 +1,10 @@
 package Elevator;
 
-public class Request {
+public class ElevatorRequest {
     public int requestedFloor;
     public int destinationFloor;
 
-    public Request(int requestedFloor, int destinationFloor) {
+    public ElevatorRequest(int requestedFloor, int destinationFloor) {
         this.requestedFloor = requestedFloor;
         this.destinationFloor = destinationFloor;
     }

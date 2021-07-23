@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Queue;
 
 public class ElevatorController {
-    private Queue<Request> requestQueue;
+    private Queue<ElevatorRequest> elevatorRequestQueue;
     private final List<FloorControlDisplay> floorControlDisplays;
     private List<Elevator> elevators;
     private final int firstFloor;   //First floor might be negative
     private final int lastFloor;
 
     public ElevatorController(int firstFloor, int lastFloor){
-        this.requestQueue = new LinkedList<>();
+        this.elevatorRequestQueue = new LinkedList<>();
         this.floorControlDisplays = new ArrayList<>();
         this.elevators = new ArrayList<>();
         this.firstFloor = firstFloor;
@@ -29,31 +29,32 @@ public class ElevatorController {
     }
 
     public void addElevatorRequest(int requestedFloor, int destinationFloor){
-        Request request = new Request(requestedFloor,destinationFloor);
-        requestQueue.add(request);
+        ElevatorRequest elevatorRequest = new ElevatorRequest(requestedFloor,destinationFloor);
+        elevatorRequestQueue.add(elevatorRequest);
         processRequest(); //This could be replaced by a timer that checks constantly for new requests on the queue
     }
 
     private void processRequest(){
-        Request currentRequest = requestQueue.remove();
-
-        Elevator elevator = getNearestElevator(currentRequest.requestedFloor);
+        ElevatorRequest currentElevatorRequest = elevatorRequestQueue.remove(); //Pops a request from the queue
+        Elevator elevator = getNearestElevator(currentElevatorRequest.requestedFloor);  //Gets the nearest available elevator
+        int floorIndex = Math.abs(this.firstFloor) + currentElevatorRequest.requestedFloor;
+        FloorControlDisplay floorControlDisplay = floorControlDisplays.get(floorIndex);
+        String messageToDisplay;
 
         if(elevator != null){
-            int floorIndex = Math.abs(this.firstFloor) + currentRequest.requestedFloor;
-            FloorControlDisplay floorControlDisplay = floorControlDisplays.get(floorIndex);
-            floorControlDisplay.updateFromController(elevator.getId()); //Update the screen
-            elevator.setCurrentFloor(currentRequest.destinationFloor);
+            elevator.setCurrentFloor(currentElevatorRequest.destinationFloor);
+            messageToDisplay = "Elevator " + elevator.getId() + " is taking the request to go from floor " +
+                    currentElevatorRequest.requestedFloor + " to floor " + currentElevatorRequest.destinationFloor;
         }
         else{
-            System.out.println("Couldn't process the request");
+            messageToDisplay = "Couldn't process the request";
         }
+
+        floorControlDisplay.updateFromController(messageToDisplay); //Update the screen
     }
 
     private Elevator getNearestElevator(int startingFloor){
-
-        //Maximum distance +1 to simulate infinity in the algorithm
-        int nearestElevatorDistance = this.lastFloor + Math.abs(this.firstFloor) + 1;
+        int nearestElevatorDistance = this.lastFloor + Math.abs(this.firstFloor) + 1; //Maximum distance +1 to simulate infinity
         Elevator nearestElevator = null;    //Variable to store the elevator with the minimum distance
 
         for(Elevator currentElevator : elevators){

@@ -16,7 +16,7 @@ public class FloorControlDisplay {
     }
 
     //Shows a response from the elevator control center
-    public void updateFromController(int elevatorId){
-        System.out.println("Elevator " + elevatorId + " is taking the request");
+    public void updateFromController(String message){
+        System.out.println(message);
     }
 }
