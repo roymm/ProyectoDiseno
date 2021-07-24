@@ -5,6 +5,9 @@ import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
 import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.MovementSensor;
 
 public class MovementSensorFactory extends SmartDeviceFactory  {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public SmartDevice createSmartDevice() {
         return new MovementSensor();

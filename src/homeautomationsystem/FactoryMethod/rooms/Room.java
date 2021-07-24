@@ -4,20 +4,27 @@ import homeautomationsystem.Mediator.Mediator;
 
 public class Room {
     int id;
-    String nombre;
     Mediator context;
+    String name;
 
-    public Room(int id, String nombre) {
+    public Room(int id, String name) {
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
     }
 
+    /**
+     * This method gives the mediator context to the class.
+     *
+     * @param context This context is the one given by the mediator.
+     */
     public void setContext(Mediator context) {
         this.context = context;
     }
 
-    public void turnRoomLight() throws Exception {
-        context.turnLightActuator(id);
-        context.turnLightSensor(id);
+    /**
+     * @return The room's unique id.
+     */
+    private int getId() {
+        return id;
     }
 }

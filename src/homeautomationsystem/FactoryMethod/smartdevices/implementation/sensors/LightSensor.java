@@ -4,19 +4,29 @@ import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
 
 public class LightSensor extends SmartDevice {
 
+//    @Override
+//    public void setType(String type) {
+//        super.setType(type);
+//        this.type = "luz";
+//    }
 
-    boolean isTurnedOn;
-
-    public void turnOff() {}
-
-    public boolean isTurnedOn() {
-        return isTurnedOn;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void turnOn() {
+        super.turnOn();
+        this.smartDeviceOn = true;
+        this.context.deactivateBulbBehavior();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public boolean turnOn() {
-        super.turnOn();
-
-        return true;
+    public void turnOff() {
+        super.turnOff();
+        this.smartDeviceOn = false;
+        this.context.activateBulbBehavior();
     }
 }
