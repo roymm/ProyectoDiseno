@@ -9,6 +9,7 @@ package Security_System;
  *            Maria Jesús B98243
  */
 
+/*Super class that individual security components and collections from the Composite pattern extends*/
 public abstract class SecurityComponent {
     private final int id;
 

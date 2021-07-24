@@ -12,6 +12,7 @@ import java.util.List;
  *            Maria Jesús B98243
  */
 
+/*Concrete implementation of a security device that subscribes to a security center and receives requests from it*/
 public class Camera extends ISecurityDevice{
     private List<Person> identifiedPeople = new LinkedList<>();
 
@@ -32,6 +33,9 @@ public class Camera extends ISecurityDevice{
         identifiedPeople.add(person);
     }
 
+    /*If the person that the security center is looking for is on its list of identified people,
+    returns aa reference of itself
+     */
     @Override
     public SecurityComponent identifyUser(int searchedId) {
         for (Person identifiedPerson : identifiedPeople) {

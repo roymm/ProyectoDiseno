@@ -9,6 +9,7 @@ package Security_System;
  *            Maria Jesús B98243
  */
 
+/*Super class that each type of security device extends*/
 public abstract class ISecurityDevice extends SecurityComponent{
     protected Position position;
 
@@ -27,6 +28,7 @@ public abstract class ISecurityDevice extends SecurityComponent{
         return position;
     }
 
+    /*Each type of security device will implement this function to identify an user*/
     @Override
     abstract public SecurityComponent identifyUser(int id);
 }
