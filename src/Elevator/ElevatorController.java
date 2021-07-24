@@ -28,6 +28,10 @@ public class ElevatorController {
         elevators.add(elevator);
     }
 
+    public List<Elevator> getElevators() {
+        return elevators;
+    }
+
     public void addElevatorRequest(int requestedFloor, int destinationFloor){
         ElevatorRequest elevatorRequest = new ElevatorRequest(requestedFloor,destinationFloor);
         elevatorRequestQueue.add(elevatorRequest);

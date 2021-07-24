@@ -9,6 +9,11 @@ public class Elevator {
         this.id = id;
     }
 
+    public Elevator(int id, int currentFloor) {
+        this.currentFloor = currentFloor;
+        this.id = id;
+    }
+
     public int getId(){
         return this.id;
     }
