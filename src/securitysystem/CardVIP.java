@@ -1,4 +1,4 @@
-package Security_System;
+package securitysystem;
 
 /**
  * @author Carlos Espinoza B92786

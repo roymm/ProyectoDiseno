@@ -1,4 +1,4 @@
-package Elevator;
+package elevator;
 
 public class ElevatorRequest {
     public int requestedFloor;

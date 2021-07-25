@@ -1,4 +1,4 @@
-package Security_System;
+package securitysystem;
 
 import java.util.LinkedList;
 import java.util.List;
