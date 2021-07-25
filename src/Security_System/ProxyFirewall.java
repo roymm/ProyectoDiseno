@@ -5,6 +5,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Carlos Espinoza B92786
+ *            Fabiola Jimenez B23452
+ *            Sebastián Montero B95016
+ *            Kendall Lara B43707
+ *            Roy Muñoz B54911
+ *            Maria Jesús B98243
+ */
+
 public class ProxyFirewall  implements INetworkController{
     private Logger logger;
     private List<String> blockedWebsites;
@@ -16,7 +25,7 @@ public class ProxyFirewall  implements INetworkController{
         logger = new Logger();
         blockedWebsites = new ArrayList<>();
         browser = new NetworkController();
-        visitorsList = new HashMap<Integer, Integer>();
+        visitorsList = new HashMap<>();
     }
 
     public void addBlockedWebsite(String url)
@@ -31,9 +40,7 @@ public class ProxyFirewall  implements INetworkController{
 
     private boolean verifyPermittedWebsite(String url)
     {
-        if(blockedWebsites.contains(url))
-            return false;
-        return true;
+        return !blockedWebsites.contains(url);
     }
 
     private boolean verifyVisitedSites(int id)

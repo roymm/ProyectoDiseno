@@ -1,4 +1,5 @@
 package Restaurant;
+import Restaurant.Sandwich.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -39,6 +40,21 @@ class RestaurantTest {
         //Total should be 7.25 + 8.75 + 5.75 = 21.75 (5$ were removed through memento).
         assertEquals(register.getTotalPrice(),21.75);
         register.finishOrder();
+
+    }
+
+    @Test
+    public void prototypeTest(){
+        Sandwich defaultItalian = Kitchen.from(Kitchen.Italian()).create();
+        Sandwich defaultMexican = Kitchen.from(Kitchen.Mexican()).create();
+
+        //Verify that the ingredients obtained from the Italian Prototype match the expected outcome (ciabatta and salami)
+        assertEquals(Bread.CIABATTA,defaultItalian.getBread());
+        assertEquals(Meat.SALAMI,defaultItalian.getMeat());
+
+        //Verify that the ingredients obtained from the Mexican Prototype match the expected outcome (ciabatta and salami)
+        assertEquals(Bread.TORTA,defaultMexican.getBread());
+        assertEquals(Meat.CARNITAS,defaultMexican.getMeat());
 
     }
 
