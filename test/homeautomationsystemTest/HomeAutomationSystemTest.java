@@ -52,7 +52,6 @@ public class HomeAutomationSystemTest {
      */
     @BeforeEach
     public void init() {
-        // Creates sensors and actuators.
         factory = new LightSensorFactory();
         lightSensor = factory.create();
         factory = new NoiseSensorFactory();
@@ -67,31 +66,25 @@ public class HomeAutomationSystemTest {
         speaker = factory.create();
         kitchen = new Room(1, "kitchen");
 
-        // Creates behaviors.
         lightBehavior = new BehaviorImplementation("light", lightSensor, bulb, false);
         doorBehavior = new BehaviorImplementation("door", movementSensor, door, false);
         musicBehavior = new BehaviorImplementation("music", noiseSensor, speaker, false);
 
-        // Creates mediator.
         mediator = new Mediator(kitchen, (LightSensor) lightSensor, (NoiseSensor) noiseSensor, (MovementSensor) movementSensor,
                 (BulbActuator) bulb, (DoorActuator) door, (SpeakerActuator) speaker, lightBehavior, doorBehavior, musicBehavior);
 
-        // Sets the context for the room sensors.
         lightSensor.setContext(mediator);
         noiseSensor.setContext(mediator);
         movementSensor.setContext(mediator);
 
-        // Sets the context for the room actuators.
         bulb.setContext(mediator);
         door.setContext(mediator);
         speaker.setContext(mediator);
 
-        // Sets the context for the room behaviors.
         lightBehavior.setContext(mediator);
         doorBehavior.setContext(mediator);
         musicBehavior.setContext(mediator);
 
-        // Sets the context for the room we're adding the Smart Devices.
         kitchen.setContext(mediator);
     }
 

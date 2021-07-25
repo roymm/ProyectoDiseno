@@ -1,8 +1,16 @@
+/**
+ * @author Carlos Espinoza B92786
+ *            Fabiola Jimenez B23452
+ *            Sebastián Montero B95016
+ *            Kendall Lara B43707
+ *            Roy Muñoz B54911
+ *            Maria Jesús B98243
+ */
 package restaurant;
 
 public class Memento {
     
-    //The Memento class saves the current and previous state of the order
+    // The Memento class saves the current and previous state of the order.
     private Order currentOrder;
     private Order previousOrder; 
 
@@ -11,11 +19,9 @@ public class Memento {
         this.previousOrder = null;
     }
 
-     /*
-     * Purpose: Saves the old current order into previousOrder and the new current order into
-     * currentOrder
-     * Input: The new current Order
-     * Output: -
+    /**
+     * Saves the old current order into previousOrder and the new current order into currentOrder
+     * @param order The new current Order
      */
     public void saveOrder(Order order){
         if(this.currentOrder == null){
@@ -26,10 +32,9 @@ public class Memento {
         }
     }
 
-     /*
-     * Purpose: Returns the previous state of an Order saved.
-     * Input: -
-     * Output: Order orderToBeReturned which contains the specifications of an order from the past.
+    /**
+     * Returns the previous state of an Order saved.
+     * @return Order orderToBeReturned which contains the specifications of an order from the past.
      */
     public Order undoOrder(){
         Order orderToBeReturned = null;

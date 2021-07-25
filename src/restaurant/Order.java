@@ -1,3 +1,11 @@
+/**
+ * @author Carlos Espinoza B92786
+ *            Fabiola Jimenez B23452
+ *            Sebastián Montero B95016
+ *            Kendall Lara B43707
+ *            Roy Muñoz B54911
+ *            Maria Jesús B98243
+ */
 package restaurant;
 import java.util.ArrayList;
 
@@ -32,10 +40,9 @@ public class Order {
         }
     }
 
-    /*
-     * Purpose: Adds a sandwich to the current order
-     * Input: a Sandwich object that is going to be ordered
-     * Output: -
+    /**
+     * Adds a sandwich to the current order.
+     * @param sandwich a Sandwich object that is going to be ordered.
      */
     public void addOrder(Sandwich sandwich){
         this.receipt += sandwich.toString() + "\t\n";
@@ -43,12 +50,10 @@ public class Order {
         this.saveOrder();
     }
 
-    //Memento's handling methods
+    // Memento's handling methods.
 
-    /*
-     * Purpose: Saves the current state of the order as a copy into the memento object
-     * Input: -
-     * Output: -
+    /**
+     * Saves the current state of the order as a copy into the memento object.
      */
     public void saveOrder(){
         Order orderCopy = new Order();
@@ -57,11 +62,9 @@ public class Order {
         this.memento.saveOrder(orderCopy); //Saves the current state using memento
     }
 
-    /*
-     * Purpose: The memento object or 'snapshot' of the order is used to undo the last
+    /**
+     * The memento object or 'snapshot' of the order is used to undo the last
      * sandwich placed for this particular order.
-     * Input: -
-     * Output: -
      */
     public void undoOrder(){
         Order previousOrder = this.memento.undoOrder();

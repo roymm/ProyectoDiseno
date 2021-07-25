@@ -1,3 +1,11 @@
+/**
+ * @author Carlos Espinoza B92786
+ *            Fabiola Jimenez B23452
+ *            Sebastián Montero B95016
+ *            Kendall Lara B43707
+ *            Roy Muñoz B54911
+ *            Maria Jesús B98243
+ */
 package restaurant;
 
 import java.util.ArrayList;
@@ -28,11 +36,9 @@ public class Register {
         this.order.undoOrder();
     }
 
-     /*
-     * Purpose: Finishes an order and adds it to the orderLog to keep track of it. A "finished" order
-     * cannot be modified.
-     * Input: -
-     * Output: -
+    /**
+     * Finishes an order and adds it to the orderLog to keep track of it.
+     * A "finished" order cannot be modified.
      */
     public void finishOrder(){
         String total = generateReceipt();
@@ -43,11 +49,11 @@ public class Register {
         this.order = null;
     }
 
-     /*
-     * Purpose: Generates a receipt of the current order. This receipt includes the sandwiches ordered,
+    /**
+     * Generates a receipt of the current order. This receipt includes the sandwiches ordered,
      * their individual prices and the total cost.
-     * Input: -
-     * Output:
+     *
+     * @return The receipt.
      */
     public String generateReceipt(){
         String items = "";

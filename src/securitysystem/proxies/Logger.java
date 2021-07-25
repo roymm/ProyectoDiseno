@@ -12,7 +12,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-
 public class Logger {
     FileWriter logFile;
 
@@ -23,7 +22,11 @@ public class Logger {
 
     }
 
-    /*Records the accessed websites for each visitor */
+    /**
+     * Records the accessed websites for each visitor
+     * @param idNumber is the id of the visitor
+     * @param webSite is the website that needs to be accessed.
+     */
     public void add(int idNumber, String webSite) throws IOException {
         this.createFile(idNumber);
         String log = "El visitante con el id " + idNumber + " accedio al sitio " + webSite + "\n";

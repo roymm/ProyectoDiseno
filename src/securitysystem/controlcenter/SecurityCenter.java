@@ -1,8 +1,3 @@
-package securitysystem;
-
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -12,7 +7,14 @@ import java.util.List;
  *            Maria Jesús B98243
  */
 
-/*Center of command that receives requests from the end user and pass them to its subscribers*/
+package securitysystem;
+
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * Center of command that receives requests from the end user and pass them to its subscribers
+ */
 public class SecurityCenter {
     private List<SecurityComponent> subscribers;
 
@@ -32,7 +34,10 @@ public class SecurityCenter {
         subscribers.remove(component);
     }
 
-    /*Pass the request to identify a person to all its subscribers. If this returns null, no one identified the person*/
+    /**
+     * Pass the request to identify a person to all its subscribers. If this returns null, no one identified the person
+     * @param idNumber is the id of the person
+     */
     public SecurityComponent identifyPerson(int idNumber){
         for (SecurityComponent subscriber :
                 subscribers) {
@@ -46,7 +51,11 @@ public class SecurityCenter {
         return null;
     }
 
-    /*Pass the request to change a the position to all its subscribers*/
+    /**
+     * Pass the request to change a the position to all its subscribers
+     * @param position is the position that the camaras need to be pointing to
+     * @param id us the id of the camera.
+     */
     public void changePosition(Position position, int id){
         for (SecurityComponent subscriber: subscribers) {
             subscriber.changePosition(id,position);

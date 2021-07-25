@@ -1,10 +1,3 @@
-package securitysystem;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -13,7 +6,12 @@ import java.util.List;
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
+package securitysystem;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class ProxyFirewall  implements INetworkController{
@@ -30,7 +28,10 @@ public class ProxyFirewall  implements INetworkController{
         visitorsList = new HashMap<>();
     }
 
-    /*Proxy that verifies blocked websites*/
+    /**
+     * Proxy that verifies blocked websites.
+     * @param url is the url to be checked.
+     */
     public void addBlockedWebsite(String url)
     {
         blockedWebsites.add(url);
@@ -46,7 +47,11 @@ public class ProxyFirewall  implements INetworkController{
         return !blockedWebsites.contains(url);
     }
 
-    /*Proxy verifies if a visitor already access 100 websites */
+
+    /**
+     * Proxy verifies if a visitor already access 100 websites
+     * @param id is the id of the visitor.
+     */
     private boolean verifyVisitedSites(int id)
     {
         int counter = 0;
@@ -64,7 +69,11 @@ public class ProxyFirewall  implements INetworkController{
         }
     }
 
-    /*Connects to the website if the visitor request passes the verifications*/
+    /**
+     * Connects to the website if the visitor request passes the verifications
+     * @param url is the url to be accesed.
+     * @param idNumber is the id of the visitor.
+     */
     public boolean connect (String url, int idNumber) throws IOException {
         if(verifyPermittedWebsite(url))
         {

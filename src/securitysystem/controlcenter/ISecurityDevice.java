@@ -1,5 +1,3 @@
-package securitysystem;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -8,8 +6,13 @@ package securitysystem;
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
+package securitysystem;
 
-/*Super class that each type of security device extends*/
+
+
+/**
+ * Super class that each type of security device extends
+ */
 public abstract class ISecurityDevice extends SecurityComponent{
     protected Position position;
 
@@ -28,7 +31,10 @@ public abstract class ISecurityDevice extends SecurityComponent{
         return position;
     }
 
-    /*Each type of security device will implement this function to identify an user*/
+    /**
+     * Each type of security device will implement this function to identify an user
+     * @param id is the id of the user to be identified.
+     */
     @Override
     abstract public SecurityComponent identifyUser(int id);
 }

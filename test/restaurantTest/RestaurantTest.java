@@ -24,7 +24,10 @@ class RestaurantTest {
     Sandwich italian2 = Kitchen.from(Kitchen.Italian()).addCheese().addTomato().addCheese().addCheese().create();
     Sandwich mexican = Kitchen.from(Kitchen.Mexican()).addCheese().create();
     Sandwich mexican2 = Kitchen.from(Kitchen.Mexican()).create();
-	
+
+    /**
+     * Tests adding orders to an account, and that the result is the expected.
+     */
 	@Test
 	public void addOrderTest(){
         register.makeNewOrder();
@@ -37,7 +40,11 @@ class RestaurantTest {
         register.finishOrder();
 
     }
-	
+
+    /**
+     * Tests the removal of a line from an order.
+     * Test that the price is the expected.
+     */
 	@Test
 	public void mementoRemoveTest(){
         register.makeNewOrder();
@@ -52,6 +59,9 @@ class RestaurantTest {
 
     }
 
+    /**
+     * Test the creation of sandwiches using the prototype.
+     */
     @Test
     public void prototypeTest(){
         Sandwich defaultItalian = Kitchen.from(Kitchen.Italian()).create();

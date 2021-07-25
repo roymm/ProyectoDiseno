@@ -18,8 +18,11 @@ public class AccessCardTest {
     private final Place reservationArea = new Place(AccessLevel.ReservationArea,"Reservation Area");
     private final Place commonArea = new Place(AccessLevel.CommonArea, "Common Area");
 
+    /**
+     * Test the level of access of a recently created baseCard.
+     */
     @Test
-    public void canAccess_BaseAccessCard_OnlyRoomAccess(){
+    public void canAccessBaseAccessCardOnlyRoomAccess(){
         IAccessCard baseCard = new BaseAccessCard();
 
         assertTrue(baseCard.canAccess(room));
@@ -28,8 +31,11 @@ public class AccessCardTest {
         assertFalse(baseCard.canAccess(commonArea));
     }
 
+    /**
+     * Test the that the card has access to its given decorators.
+     */
     @Test
-    public void canAccess_DecoratedCard_FullAccess(){
+    public void canAccessDecoratedCardFullAccess(){
         IAccessCard decoratedCard = new BaseAccessCard();
         decoratedCard = new CardMaintenanceArea(decoratedCard);
         decoratedCard = new CardReservationArea(decoratedCard);

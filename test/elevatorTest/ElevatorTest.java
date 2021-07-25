@@ -28,6 +28,9 @@ public class ElevatorTest {
     ElevatorController elevatorController;
     ArrayList<FloorControlDisplay> floorControlDisplayList = new ArrayList<>(NUM_FLOORS);
 
+    /**
+     * Initialices the required instances for the test.
+     */
     @BeforeEach
     public void init(){
         elevatorController = new ElevatorController(FIRST_FLOOR,FIRST_FLOOR+NUM_FLOORS);
@@ -44,8 +47,12 @@ public class ElevatorTest {
         }
     }
 
+    /**
+     * All elevators are placed in the zeroeth floor and a request is made to a random floor.
+     * Elevator zero should take the request and stay at the new floor.
+     */
     @Test
-    public void AllElevatorsFloorZero_RequestFromFirstFloor(){
+    public void allElevatorsFloorZeroRequestFromFirstFloor(){
         int randomFloorNumber = rand.nextInt((NUM_FLOORS-1) - FIRST_FLOOR);
         floorControlDisplayList.get(0).sendRequestToController(randomFloorNumber);
 
@@ -53,8 +60,13 @@ public class ElevatorTest {
         assertEquals(randomFloorNumber,elevatorController.getElevators().get(0).getCurrentFloor());
     }
 
+    /**
+     * A request is made to a random floor different from the first one.
+     * Sends all of the elevators to a random floor except the last one.
+     * We assert that the last elevator takes the request and stays at the last random number.
+     */
     @Test
-    public void LastElevatorFirstFloor_RequestFromFirstFloor(){
+    public void lastElevatorFirstFloorRequestFromFirstFloor(){
         //Random floor number excluding the first floor
         int randomFloorNumber = rand.nextInt((NUM_FLOORS-1) - FIRST_FLOOR+1);
 
@@ -69,16 +81,26 @@ public class ElevatorTest {
         assertEquals(randomFloorNumber,elevatorController.getElevators().get(NUM_ELEVATORS-1).getCurrentFloor());
     }
 
+    /**
+     * All elevators are placed in the first floor.
+     * A request is made to the last floor.
+     * Elevator 0 should take the call and stay there.
+     */
     @Test
-    public void AllElevatorsFirstFloor_RequestFromLastFloor(){
+    public void AllElevatorsFirstFloorRequestFromLastFloor(){
         int randomFloorNumber = rand.nextInt((NUM_FLOORS-1) - FIRST_FLOOR);
         floorControlDisplayList.get(NUM_FLOORS-2).sendRequestToController(randomFloorNumber);
 
         assertEquals(randomFloorNumber,elevatorController.getElevators().get(0).getCurrentFloor());
     }
 
+    /**
+     * A request is made to a random floor different from the first one.
+     * Makes a request to a random floor.
+     * Now makes a request from the random floor and it asserts the elevator that took the request is the same that is taking this one.
+     */
     @Test
-    public void RandomElevatorNear_RequestFromRandomFloor(){
+    public void RandomElevatorNearRequestFromRandomFloor(){
         //Random floor number excluding the first floor
         int randomFloorNumber = rand.nextInt((NUM_FLOORS-1) - FIRST_FLOOR+1);
         int randomElevatorNumber = rand.nextInt(NUM_ELEVATORS);

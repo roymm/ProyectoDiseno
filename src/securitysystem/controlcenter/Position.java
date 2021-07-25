@@ -1,5 +1,3 @@
-package securitysystem;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -8,7 +6,11 @@ package securitysystem;
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
+package securitysystem;
 
-public interface IAccessCard {
-    boolean canAccess(Place place);
+
+public enum Position {
+    LEFT,
+    RIGHT,
+    CENTER
 }

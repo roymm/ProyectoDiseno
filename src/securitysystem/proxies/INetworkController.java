@@ -1,5 +1,3 @@
-package securitysystem;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -8,11 +6,13 @@ package securitysystem;
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
+package securitysystem;
 
-public enum AccessLevel {
-    VIP,
-    CommonArea,
-    Maintenance,
-    ReservationArea,
-    Room
+import java.io.IOException;
+
+
+public interface INetworkController {
+
+    boolean connect(String url, int idNumber) throws IOException;
+
 }

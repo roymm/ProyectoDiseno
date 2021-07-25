@@ -1,5 +1,3 @@
-package securitysystem;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -8,8 +6,11 @@ package securitysystem;
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
+package securitysystem;
 
-/*Super class that individual security components and collections from the Composite pattern extends*/
+/**
+ * Super class that individual security components and collections from the Composite pattern extends
+ */
 public abstract class SecurityComponent {
     private final int id;
 

@@ -28,6 +28,9 @@ public class InternetAccessTest {
         proxy.addBlockedWebsite("www.facebook.com");
     }
 
+    /**
+     * Test the user has access to the permitted websites.
+     */
     @Test
     void verifyPermittedWebsite() throws IOException {
         assertFalse(proxy.connect("www.juegos.com", ilegalVisitor.getIdNumber()));
@@ -35,7 +38,10 @@ public class InternetAccessTest {
         assertTrue(proxy.connect("www.instagram.com", legalVisitor.getIdNumber()));
     }
 
-    //Assumes theres a device for each visitor
+    /**
+     * Assert that a user cannot connect more than 100 times to a website.
+     * Assumes theres a device for each visitor.
+     */
     @Test
     void connect100WebSites() throws IOException {
         for (int i = 0; i < 100; i++) {

@@ -52,6 +52,10 @@ class SecurityCenterTest {
 
     }
 
+    /**
+     * Registers a component on the security collection.
+     * Asserts the correct number of subscribers.
+     */
     @Test
     void registerComponent() {
         for(SecurityComponent securityComponent : deviceCollections){
@@ -61,6 +65,9 @@ class SecurityCenterTest {
         assertEquals(securityCenter.getSubscribers().size(),NUM_CAMERA_GROUPS);
     }
 
+    /**
+     * Deletes a security component.
+     */
     @Test
     void deleteComponent() {
         registerComponent();
@@ -69,6 +76,9 @@ class SecurityCenterTest {
         assertEquals(NUM_CAMERA_GROUPS - 1, securityCenter.getSubscribers().size());
     }
 
+    /**
+     * Removes all security components.
+     */
     @Test
     void deleteAllComponent() {
         registerComponent();
@@ -79,6 +89,9 @@ class SecurityCenterTest {
         assertEquals(0,securityCenter.getSubscribers().size());
     }
 
+    /**
+     * Identifies a specific person.
+     */
     @Test
     void identifyPerson() {
         registerComponent();
@@ -87,6 +100,9 @@ class SecurityCenterTest {
         assertEquals(expectedCamera,cameraSeeingPerson);
     }
 
+    /**
+     *  Identifies each person that exists .
+     */
     @Test
     void identifyAllPeople() {
         registerComponent();
@@ -97,6 +113,9 @@ class SecurityCenterTest {
 
     }
 
+    /**
+     * Changes the camera position.
+     */
     @Test
     void changeCameraPosition() {
         registerComponent();
@@ -106,6 +125,9 @@ class SecurityCenterTest {
         assertEquals(securityComponents.get(0).position, Position.LEFT);
     }
 
+    /**
+     * Changes the position of a whole collection.
+     */
     @Test
     void changeCollectionPosition() {
         registerComponent();
