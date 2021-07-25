@@ -1,5 +1,5 @@
-package Restaurant;
-import Restaurant.Sandwich.*;
+package restaurant;
+import restaurant.Sandwich.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
