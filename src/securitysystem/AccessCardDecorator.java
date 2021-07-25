@@ -1,5 +1,3 @@
-package securitysystem;
-
 /**
  * @author Carlos Espinoza B92786
  *            Fabiola Jimenez B23452
@@ -8,6 +6,7 @@ package securitysystem;
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
+package securitysystem;
 
 /*Base class for all the decorators.
 Wraps an IAccessCard so the concrete decorators add additional functionalities.
