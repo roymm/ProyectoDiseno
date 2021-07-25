@@ -14,6 +14,8 @@ import java.util.List;
  *            Maria Jesús B98243
  */
 
+
+
 public class ProxyFirewall  implements INetworkController{
     private Logger logger;
     private List<String> blockedWebsites;
@@ -28,6 +30,7 @@ public class ProxyFirewall  implements INetworkController{
         visitorsList = new HashMap<>();
     }
 
+    /*Proxy that verifies blocked websites*/
     public void addBlockedWebsite(String url)
     {
         blockedWebsites.add(url);
@@ -43,6 +46,7 @@ public class ProxyFirewall  implements INetworkController{
         return !blockedWebsites.contains(url);
     }
 
+    /*Proxy verifies if a visitor already access 100 websites */
     private boolean verifyVisitedSites(int id)
     {
         int counter = 0;
@@ -60,6 +64,7 @@ public class ProxyFirewall  implements INetworkController{
         }
     }
 
+    /*Connects to the website if the visitor request passes the verifications*/
     public boolean connect (String url, int idNumber) throws IOException {
         if(verifyPermittedWebsite(url))
         {

@@ -21,6 +21,7 @@ public class Logger {
 
     }
 
+    /*Records the accessed websites for each visitor */
     public void add(int idNumber, String webSite) throws IOException {
         this.createFile(idNumber);
         String log = "El visitante con el id " + idNumber + " accedio al sitio " + webSite + "\n";
