@@ -5,6 +5,13 @@ import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
 public class NoiseSensor extends SmartDevice {
 
     /**
+     * Constructor, sets the type of the smart device
+     */
+    public NoiseSensor(){
+        this.type = "Noise Sensor";
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override

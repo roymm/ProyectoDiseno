@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import Restaurant.*;
 import org.junit.jupiter.api.Test;
 
-class restaurantTest {
+class RestaurantTest {
 	
 	Register register = new Register();
 

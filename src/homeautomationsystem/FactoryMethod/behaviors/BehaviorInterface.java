@@ -17,7 +17,12 @@ public interface BehaviorInterface {
     void setActive(boolean active);
 
     /**
+     * Gets the state of the behavior.
+     */
+    Boolean getActive();
+
+    /**
      * This method displays in console the behavior's current state.
      */
-    void displayBehavior();
+    String displayBehavior();
 }

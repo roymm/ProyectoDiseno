@@ -3,9 +3,9 @@ package homeautomationsystem.FactoryMethod.rooms;
 import homeautomationsystem.Mediator.Mediator;
 
 public class Room {
-    int id;
-    Mediator context;
-    String name;
+    private int id;
+    private Mediator context;
+    private String name;
 
     public Room(int id, String name) {
         this.id = id;

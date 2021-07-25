@@ -4,11 +4,12 @@ import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
 
 public class LightSensor extends SmartDevice {
 
-//    @Override
-//    public void setType(String type) {
-//        super.setType(type);
-//        this.type = "luz";
-//    }
+    /**
+     * Constructor, sets the type of the smart device
+     */
+    public LightSensor(){
+        this.type = "Light Sensor";
+    }
 
     /**
      * {@inheritDoc}

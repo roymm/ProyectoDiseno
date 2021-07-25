@@ -9,6 +9,9 @@ import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.Li
 import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.MovementSensor;
 import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.NoiseSensor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Mediator {
 
     private final Room room;
@@ -24,6 +27,8 @@ public class Mediator {
     private final BehaviorInterface turnBulbWhenSensorOn;
     private final BehaviorInterface openDoorWhenMovementOn;
     private final BehaviorInterface turnSpeakerWhenSoundOn;
+
+    public Set<BehaviorInterface> behaviorSet = new HashSet<>();
 
     public Mediator(Room room, LightSensor lightSensor, NoiseSensor noiseSensor, MovementSensor movementSensor, BulbActuator bulbActuator,
                     DoorActuator doorActuator, SpeakerActuator speakerActuator, BehaviorInterface turnBulbWhenSensorOn,

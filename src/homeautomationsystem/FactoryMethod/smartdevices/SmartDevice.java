@@ -4,7 +4,7 @@ import homeautomationsystem.Mediator.Mediator;
 
 public abstract class SmartDevice {
 
-    protected boolean smartDeviceOn = false;
+    public boolean smartDeviceOn = false;
     public String type;
     public Mediator context;
 

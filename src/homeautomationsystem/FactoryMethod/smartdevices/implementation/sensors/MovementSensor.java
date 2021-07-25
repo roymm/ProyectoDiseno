@@ -5,6 +5,13 @@ import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
 public class MovementSensor extends SmartDevice {
 
     /**
+     * Constructor, sets the type of the smart device
+     */
+    public MovementSensor(){
+        this.type = "Movement Sensor";
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override

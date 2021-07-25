@@ -6,17 +6,24 @@ import homeautomationsystem.Mediator.Mediator;
 import java.util.Objects;
 
 public class BehaviorImplementation implements BehaviorInterface {
-    Mediator context;
-    SmartDevice sensor;
-    SmartDevice actuator;
-    String name;
-    Boolean active;
+    private Mediator context;
+    private SmartDevice sensor;
+    private SmartDevice actuator;
+    private String name;
+    private Boolean active;
 
     public BehaviorImplementation(String name, SmartDevice sensor, SmartDevice actuator, boolean active) {
         this.name = name;
         this.sensor = sensor;
         this.actuator = actuator;
         this.active = active;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Boolean getActive() {
+        return active;
     }
 
     /**
@@ -39,9 +46,11 @@ public class BehaviorImplementation implements BehaviorInterface {
      * {@inheritDoc}
      */
     @Override
-    public void displayBehavior() {
-        String state = this.isActive() ? "activo" : "desactivado";
-        System.out.println("El comportamiento " + this.getName() + " está " + state);
+    public String displayBehavior() {
+        String state = this.isActive() ? "active" : "deactivated";
+        String result = "Behavior " + this.getName() + " is " + state;
+        System.out.println(result);
+        return result;
     }
 
     /**
