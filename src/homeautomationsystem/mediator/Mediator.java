@@ -1,6 +1,5 @@
 /**
- * @author
- * Carlos Espinoza B92786
+ * @author Carlos Espinoza B92786
  * Fabiola Jimenez B23452
  * Sebastián Montero B95016
  * Kendall Lara B43707
@@ -8,16 +7,16 @@
  * Maria Jesús B98243
  */
 
-package homeautomationsystem.Mediator;
+package homeautomationsystem.mediator;
 
-import homeautomationsystem.FactoryMethod.behaviors.BehaviorInterface;
-import homeautomationsystem.FactoryMethod.rooms.Room;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.BulbActuator;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.DoorActuator;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.SpeakerActuator;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.LightSensor;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.MovementSensor;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.NoiseSensor;
+import homeautomationsystem.factorymethod.behaviors.BehaviorInterface;
+import homeautomationsystem.factorymethod.rooms.Room;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.BulbActuator;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.DoorActuator;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.SpeakerActuator;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.LightSensor;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.MovementSensor;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.NoiseSensor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -54,8 +53,6 @@ public class Mediator {
         this.openDoorWhenMovementOn = openDoorWhenMovementOn;
         this.turnSpeakerWhenSoundOn = turnSpeakerWhenSoundOn;
     }
-
-    //TODO Los nombres de los métodos son self explanatory, por lo que hay que considerar si son necesarios o no.
 
     /**
      * This method activates the bulb's behavior

@@ -6,7 +6,7 @@
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
-package securitysystem;
+package securitysystem.controlcenter;
 
 /**
  * Super class that individual security components and collections from the Composite pattern extends

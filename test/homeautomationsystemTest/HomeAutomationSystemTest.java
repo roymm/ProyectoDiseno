@@ -10,19 +10,20 @@
 
 package homeautomationsystemTest;
 
-import homeautomationsystem.FactoryMethod.behaviors.BehaviorImplementation;
-import homeautomationsystem.FactoryMethod.behaviors.BehaviorInterface;
-import homeautomationsystem.FactoryMethod.rooms.Room;
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
-import homeautomationsystem.FactoryMethod.smartdevices.concretefactories.*;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.BulbActuator;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.DoorActuator;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.SpeakerActuator;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.LightSensor;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.MovementSensor;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.NoiseSensor;
-import homeautomationsystem.Mediator.Mediator;
+import homeautomationsystem.factorymethod.behaviors.BehaviorImplementation;
+import homeautomationsystem.factorymethod.behaviors.BehaviorInterface;
+import homeautomationsystem.factorymethod.rooms.Room;
+import homeautomationsystem.factorymethod.smartdevices.SmartDevice;
+import homeautomationsystem.factorymethod.smartdevices.SmartDeviceFactory;
+import homeautomationsystem.factorymethod.smartdevices.concretefactories.*;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.BulbActuator;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.DoorActuator;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.SpeakerActuator;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.LightSensor;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.MovementSensor;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.NoiseSensor;
+import homeautomationsystem.mediator.Mediator;
+import homeautomationsystem.factorymethod.rooms.Room;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

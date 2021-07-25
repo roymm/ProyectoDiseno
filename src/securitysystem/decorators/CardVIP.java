@@ -7,7 +7,9 @@
  *            Maria Jesús B98243
  */
 
-package securitysystem;
+package securitysystem.decorators;
+
+import securitysystem.Place;
 
 /**
  * Represents an access card that can enter the VIP areas and

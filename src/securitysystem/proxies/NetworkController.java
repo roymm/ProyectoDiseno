@@ -6,7 +6,7 @@
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
-package securitysystem;
+package securitysystem.proxies;
 
 
 public class NetworkController implements INetworkController {

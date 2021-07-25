@@ -1,13 +1,13 @@
 /**
  * @author Carlos Espinoza B92786
- *            Fabiola Jimenez B23452
- *            Sebastián Montero B95016
- *            Kendall Lara B43707
- *            Roy Muñoz B54911
- *            Maria Jesús B98243
+ * Fabiola Jimenez B23452
+ * Sebastián Montero B95016
+ * Kendall Lara B43707
+ * Roy Muñoz B54911
+ * Maria Jesús B98243
  */
 
-package securitysystem;
+package securitysystem.controlcenter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,11 +26,11 @@ public class SecurityCenter {
         return subscribers;
     }
 
-    public void registerComponent(SecurityComponent component){
+    public void registerComponent(SecurityComponent component) {
         subscribers.add(component);
     }
 
-    public void deleteComponent(SecurityComponent component){
+    public void deleteComponent(SecurityComponent component) {
         subscribers.remove(component);
     }
 
@@ -38,13 +38,13 @@ public class SecurityCenter {
      * Pass the request to identify a person to all its subscribers. If this returns null, no one identified the person
      * @param idNumber is the id of the person
      */
-    public SecurityComponent identifyPerson(int idNumber){
+    public SecurityComponent identifyPerson(int idNumber) {
         for (SecurityComponent subscriber :
                 subscribers) {
 
             SecurityComponent componentSeeingPerson = subscriber.identifyUser(idNumber);
 
-            if(componentSeeingPerson != null){
+            if (componentSeeingPerson != null) {
                 return componentSeeingPerson;
             }
         }
@@ -56,9 +56,9 @@ public class SecurityCenter {
      * @param position is the position that the camaras need to be pointing to
      * @param id us the id of the camera.
      */
-    public void changePosition(Position position, int id){
-        for (SecurityComponent subscriber: subscribers) {
-            subscriber.changePosition(id,position);
+    public void changePosition(Position position, int id) {
+        for (SecurityComponent subscriber : subscribers) {
+            subscriber.changePosition(id, position);
         }
     }
 }

@@ -12,9 +12,9 @@ package restaurant;
 import java.util.ArrayList;
 import java.util.List;
 
-import Restaurant.Sandwich.Bread;
-import Restaurant.Sandwich.Extra;
-import Restaurant.Sandwich.Meat;
+import restaurant.Sandwich.Bread;
+import restaurant.Sandwich.Extra;
+import restaurant.Sandwich.Meat;
 
 public class Kitchen{
 

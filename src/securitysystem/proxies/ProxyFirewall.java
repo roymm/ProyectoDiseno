@@ -1,12 +1,12 @@
 /**
  * @author Carlos Espinoza B92786
- *            Fabiola Jimenez B23452
- *            Sebastián Montero B95016
- *            Kendall Lara B43707
- *            Roy Muñoz B54911
- *            Maria Jesús B98243
+ * Fabiola Jimenez B23452
+ * Sebastián Montero B95016
+ * Kendall Lara B43707
+ * Roy Muñoz B54911
+ * Maria Jesús B98243
  */
-package securitysystem;
+package securitysystem.proxies;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,14 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class ProxyFirewall  implements INetworkController{
+public class ProxyFirewall implements INetworkController {
     private Logger logger;
     private List<String> blockedWebsites;
     private NetworkController browser;
     private HashMap<Integer, Integer> visitorsList;
 
-    ProxyFirewall()
-    {
+    public ProxyFirewall() {
         logger = new Logger();
         blockedWebsites = new ArrayList<>();
         browser = new NetworkController();
@@ -32,18 +31,15 @@ public class ProxyFirewall  implements INetworkController{
      * Proxy that verifies blocked websites.
      * @param url is the url to be checked.
      */
-    public void addBlockedWebsite(String url)
-    {
+    public void addBlockedWebsite(String url) {
         blockedWebsites.add(url);
     }
 
-    public void deleteBlockedWebsite(String url)
-    {
+    public void deleteBlockedWebsite(String url) {
         blockedWebsites.remove(url);
     }
 
-    private boolean verifyPermittedWebsite(String url)
-    {
+    private boolean verifyPermittedWebsite(String url) {
         return !blockedWebsites.contains(url);
     }
 
@@ -52,14 +48,12 @@ public class ProxyFirewall  implements INetworkController{
      * Proxy verifies if a visitor already access 100 websites
      * @param id is the id of the visitor.
      */
-    private boolean verifyVisitedSites(int id)
-    {
+    private boolean verifyVisitedSites(int id) {
         int counter = 0;
-        if (visitorsList.get(id) == null)
-        {
-            visitorsList.put(id, counter+1);
+        if (visitorsList.get(id) == null) {
+            visitorsList.put(id, counter + 1);
             return true;
-        }else {
+        } else {
             if (visitorsList.get(id) < 100) {
                 visitorsList.put(id, visitorsList.get(id) + 1);
                 return true;
@@ -74,13 +68,11 @@ public class ProxyFirewall  implements INetworkController{
      * @param url is the url to be accesed.
      * @param idNumber is the id of the visitor.
      */
-    public boolean connect (String url, int idNumber) throws IOException {
-        if(verifyPermittedWebsite(url))
-        {
-            if(verifyVisitedSites(idNumber))
-            {
+    public boolean connect(String url, int idNumber) throws IOException {
+        if (verifyPermittedWebsite(url)) {
+            if (verifyVisitedSites(idNumber)) {
                 logger.add(idNumber, url);
-                return this.browser.connect(url,idNumber);
+                return this.browser.connect(url, idNumber);
             }
 
         }

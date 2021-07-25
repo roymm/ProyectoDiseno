@@ -10,9 +10,9 @@
 
 package homeautomationsystem.factorymethod.smartdevices.concretefactories;
 
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.DoorActuator;
+import homeautomationsystem.factorymethod.smartdevices.SmartDevice;
+import homeautomationsystem.factorymethod.smartdevices.SmartDeviceFactory;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.DoorActuator;
 
 public class DoorActuatorFactory extends SmartDeviceFactory {
     /**

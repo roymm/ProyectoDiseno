@@ -1,6 +1,5 @@
 /**
- * @author
- * Carlos Espinoza B92786
+ * @author Carlos Espinoza B92786
  * Fabiola Jimenez B23452
  * Sebastián Montero B95016
  * Kendall Lara B43707

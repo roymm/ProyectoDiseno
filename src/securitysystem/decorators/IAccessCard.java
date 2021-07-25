@@ -6,7 +6,9 @@
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
-package securitysystem;
+package securitysystem.decorators;
+
+import securitysystem.Place;
 
 public interface IAccessCard {
     boolean canAccess(Place place);

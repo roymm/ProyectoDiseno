@@ -10,8 +10,8 @@
 
 package homeautomationsystem.factorymethod.behaviors;
 
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
-import homeautomationsystem.Mediator.Mediator;
+import homeautomationsystem.factorymethod.smartdevices.SmartDevice;
+import homeautomationsystem.mediator.Mediator;
 
 import java.util.Objects;
 

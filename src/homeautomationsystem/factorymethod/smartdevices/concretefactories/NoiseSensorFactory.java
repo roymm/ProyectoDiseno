@@ -10,9 +10,9 @@
 
 package homeautomationsystem.factorymethod.smartdevices.concretefactories;
 
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.NoiseSensor;
+import homeautomationsystem.factorymethod.smartdevices.SmartDevice;
+import homeautomationsystem.factorymethod.smartdevices.SmartDeviceFactory;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.NoiseSensor;
 
 public class NoiseSensorFactory extends SmartDeviceFactory {
     /**

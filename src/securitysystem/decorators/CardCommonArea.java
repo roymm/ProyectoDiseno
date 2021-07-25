@@ -6,7 +6,9 @@
  *            Roy Muñoz B54911
  *            Maria Jesús B98243
  */
-package securitysystem;
+package securitysystem.decorators;
+
+import securitysystem.Place;
 
 public class CardCommonArea extends AccessCardDecorator{
     public CardCommonArea(IAccessCard baseCard) {

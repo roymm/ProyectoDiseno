@@ -1,6 +1,5 @@
 /**
- * @author
- * Carlos Espinoza B92786
+ * @author Carlos Espinoza B92786
  * Fabiola Jimenez B23452
  * Sebastián Montero B95016
  * Kendall Lara B43707
@@ -10,9 +9,9 @@
 
 package homeautomationsystem.factorymethod.smartdevices.concretefactories;
 
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDevice;
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.actuators.BulbActuator;
+import homeautomationsystem.factorymethod.smartdevices.SmartDevice;
+import homeautomationsystem.factorymethod.smartdevices.SmartDeviceFactory;
+import homeautomationsystem.factorymethod.smartdevices.implementation.actuators.BulbActuator;
 
 public class BulbActuatorFactory extends SmartDeviceFactory {
     /**

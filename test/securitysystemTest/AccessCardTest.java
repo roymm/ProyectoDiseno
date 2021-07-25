@@ -10,7 +10,11 @@
 package securitysystemTest;
 
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import securitysystem.Place;
+import securitysystem.decorators.*;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AccessCardTest {
     private final Place room = new Place(AccessLevel.Room,"Basic Room");

@@ -1,6 +1,5 @@
 /**
- * @author
- * Carlos Espinoza B92786
+ * @author Carlos Espinoza B92786
  * Fabiola Jimenez B23452
  * Sebastián Montero B95016
  * Kendall Lara B43707
@@ -17,7 +16,7 @@ public class NoiseSensor extends SmartDevice {
     /**
      * Constructor, sets the type of the smart device
      */
-    public NoiseSensor(){
+    public NoiseSensor() {
         this.type = "Noise Sensor";
     }
 

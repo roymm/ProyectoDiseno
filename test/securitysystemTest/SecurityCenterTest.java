@@ -1,6 +1,5 @@
 /**
- * @author
- * Carlos Espinoza B92786
+ * @author Carlos Espinoza B92786
  * Fabiola Jimenez B23452
  * Sebastián Montero B95016
  * Kendall Lara B43707
@@ -11,11 +10,14 @@ package securitysystemTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import securitysystem.Person;
+import securitysystem.controlcenter.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class SecurityCenterTest {
     private final int NUM_CAMERAS = 10;
@@ -28,25 +30,25 @@ class SecurityCenterTest {
     private List<DeviceCollection> deviceCollections = new ArrayList<>(NUM_CAMERA_GROUPS);
 
     @BeforeEach
-    void init(){
+    void init() {
 
-        for (int i = 0; i < NUM_CAMERAS; i++){
+        for (int i = 0; i < NUM_CAMERAS; i++) {
             Camera testCamera = new Camera(i);
             securityComponents.add(testCamera);
         }
 
-        for (int i = 0; i < NUM_PEOPLE; i++){
+        for (int i = 0; i < NUM_PEOPLE; i++) {
             Person person = new Person(i);
             people.add(person);
             securityComponents.get(i % NUM_CAMERAS).addIdentifiedPerson(person);
         }
 
-        for(int i = 0; i < NUM_CAMERA_GROUPS; i++){
-            DeviceCollection deviceCollection = new DeviceCollection(NUM_CAMERAS+(i+1));
+        for (int i = 0; i < NUM_CAMERA_GROUPS; i++) {
+            DeviceCollection deviceCollection = new DeviceCollection(NUM_CAMERAS + (i + 1));
             deviceCollections.add(deviceCollection);
         }
 
-        for(int i = 0; i < NUM_CAMERAS; i++){
+        for (int i = 0; i < NUM_CAMERAS; i++) {
             deviceCollections.get(i % NUM_CAMERA_GROUPS).addChild(securityComponents.get(i));
         }
 
@@ -58,11 +60,11 @@ class SecurityCenterTest {
      */
     @Test
     void registerComponent() {
-        for(SecurityComponent securityComponent : deviceCollections){
+        for (SecurityComponent securityComponent : deviceCollections) {
             securityCenter.registerComponent(securityComponent);
         }
 
-        assertEquals(securityCenter.getSubscribers().size(),NUM_CAMERA_GROUPS);
+        assertEquals(securityCenter.getSubscribers().size(), NUM_CAMERA_GROUPS);
     }
 
     /**
@@ -83,10 +85,10 @@ class SecurityCenterTest {
     void deleteAllComponent() {
         registerComponent();
 
-        for(SecurityComponent securityComponent : deviceCollections){
+        for (SecurityComponent securityComponent : deviceCollections) {
             securityCenter.deleteComponent(securityComponent);
         }
-        assertEquals(0,securityCenter.getSubscribers().size());
+        assertEquals(0, securityCenter.getSubscribers().size());
     }
 
     /**
@@ -97,7 +99,7 @@ class SecurityCenterTest {
         registerComponent();
         SecurityComponent cameraSeeingPerson = securityCenter.identifyPerson(people.get(0).getIdNumber());
         SecurityComponent expectedCamera = securityComponents.get(0);
-        assertEquals(expectedCamera,cameraSeeingPerson);
+        assertEquals(expectedCamera, cameraSeeingPerson);
     }
 
     /**
@@ -107,7 +109,7 @@ class SecurityCenterTest {
     void identifyAllPeople() {
         registerComponent();
 
-        for (Person person : people){
+        for (Person person : people) {
             assertNotNull(securityCenter.identifyPerson(person.getIdNumber()));
         }
 
@@ -120,9 +122,9 @@ class SecurityCenterTest {
     void changeCameraPosition() {
         registerComponent();
 
-        securityCenter.changePosition(Position.LEFT,securityComponents.get(0).getId());
+        securityCenter.changePosition(Position.LEFT, securityComponents.get(0).getId());
 
-        assertEquals(securityComponents.get(0).position, Position.LEFT);
+        assertEquals(securityComponents.get(0).getPosition(), Position.LEFT);
     }
 
     /**
@@ -132,9 +134,9 @@ class SecurityCenterTest {
     void changeCollectionPosition() {
         registerComponent();
 
-        securityCenter.changePosition(Position.CENTER,deviceCollections.get(0).getId());
+        securityCenter.changePosition(Position.CENTER, deviceCollections.get(0).getId());
 
-        for(int i = 0; i < deviceCollections.get(0).getChildren().size(); i++){
+        for (int i = 0; i < deviceCollections.get(0).getChildren().size(); i++) {
             ISecurityDevice camera = (ISecurityDevice) deviceCollections.get(0).getChildren().get(i);
             assertEquals(camera.getPosition(), Position.CENTER);
         }

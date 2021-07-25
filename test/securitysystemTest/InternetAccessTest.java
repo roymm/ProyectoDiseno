@@ -11,10 +11,13 @@ package securitysystemTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import securitysystem.Person;
+import securitysystem.proxies.ProxyFirewall;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class InternetAccessTest {
     private ProxyFirewall proxy = new ProxyFirewall();

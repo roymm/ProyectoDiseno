@@ -7,7 +7,7 @@
  *            Maria Jesús B98243
  */
 
-package securitysystem;
+package securitysystem.proxies;
 import java.io.FileWriter;
 import java.io.IOException;
 

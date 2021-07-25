@@ -10,8 +10,8 @@
 
 package homeautomationsystem.factorymethod.smartdevices.concretefactories;
 
-import homeautomationsystem.FactoryMethod.smartdevices.SmartDeviceFactory;
-import homeautomationsystem.FactoryMethod.smartdevices.implementation.sensors.LightSensor;
+import homeautomationsystem.factorymethod.smartdevices.SmartDeviceFactory;
+import homeautomationsystem.factorymethod.smartdevices.implementation.sensors.LightSensor;
 
 public class LightSensorFactory extends SmartDeviceFactory {
     /**

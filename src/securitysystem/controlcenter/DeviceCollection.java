@@ -1,12 +1,12 @@
 /**
  * @author Carlos Espinoza B92786
- *            Fabiola Jimenez B23452
- *            Sebastián Montero B95016
- *            Kendall Lara B43707
- *            Roy Muñoz B54911
- *            Maria Jesús B98243
+ * Fabiola Jimenez B23452
+ * Sebastián Montero B95016
+ * Kendall Lara B43707
+ * Roy Muñoz B54911
+ * Maria Jesús B98243
  */
-package securitysystem;
+package securitysystem.controlcenter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class DeviceCollection extends SecurityComponent {
     private List<SecurityComponent> children;
 
-    DeviceCollection(int id) {
+    public DeviceCollection(int id) {
         super(id);
         children = new LinkedList<>();
     }
@@ -29,12 +29,11 @@ public class DeviceCollection extends SecurityComponent {
      */
     @Override
     public void changePosition(int id, Position position) {
-        if(id == super.getId()){    // If the requested id to move is the collection's id.
+        if (id == super.getId()) {    // If the requested id to move is the collection's id.
             for (SecurityComponent child : children) {
-                child.changePosition(child.getId(),position);
+                child.changePosition(child.getId(), position);
             }
-        }
-        else {  // If not, searches for a child with the requested id.
+        } else {  // If not, searches for a child with the requested id.
             for (SecurityComponent child : children) {
                 child.changePosition(id, position);
             }
@@ -48,14 +47,14 @@ public class DeviceCollection extends SecurityComponent {
     @Override
     public SecurityComponent identifyUser(int id) {
         for (SecurityComponent child : children) {
-            if(child.identifyUser(id) != null){
+            if (child.identifyUser(id) != null) {
                 return child;
             }
         }
         return null;
     }
 
-    public void addChild(SecurityComponent child){
+    public void addChild(SecurityComponent child) {
         children.add(child);
     }
 

@@ -1,19 +1,18 @@
 /**
  * @author Carlos Espinoza B92786
- *            Fabiola Jimenez B23452
- *            Sebastián Montero B95016
- *            Kendall Lara B43707
- *            Roy Muñoz B54911
- *            Maria Jesús B98243
+ * Fabiola Jimenez B23452
+ * Sebastián Montero B95016
+ * Kendall Lara B43707
+ * Roy Muñoz B54911
+ * Maria Jesús B98243
  */
-package securitysystem;
-
+package securitysystem.controlcenter;
 
 
 /**
  * Super class that each type of security device extends
  */
-public abstract class ISecurityDevice extends SecurityComponent{
+public abstract class ISecurityDevice extends SecurityComponent {
     protected Position position;
 
     ISecurityDevice(int id) {
@@ -21,8 +20,8 @@ public abstract class ISecurityDevice extends SecurityComponent{
     }
 
     @Override
-    public void changePosition(int id, Position position){
-        if(id == super.getId()){
+    public void changePosition(int id, Position position) {
+        if (id == super.getId()) {
             this.position = position;
         }
     }

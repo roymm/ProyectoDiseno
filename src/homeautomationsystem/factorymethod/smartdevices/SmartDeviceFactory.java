@@ -1,6 +1,5 @@
 /**
- * @author
- * Carlos Espinoza B92786
+ * @author Carlos Espinoza B92786
  * Fabiola Jimenez B23452
  * Sebastián Montero B95016
  * Kendall Lara B43707
@@ -14,6 +13,7 @@ public abstract class SmartDeviceFactory {
 
     /**
      * This method is a Factory Method.
+     *
      * @return The SmartDevice we want to create.
      */
     public SmartDevice create() {
@@ -22,6 +22,7 @@ public abstract class SmartDeviceFactory {
 
     /**
      * This methods is overrided by each concrete factory.
+     *
      * @return The created Smart Device.
      */
     public abstract SmartDevice createSmartDevice();

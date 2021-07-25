@@ -8,13 +8,15 @@
  * Maria Jesús B98243
  */
 package restaurantTest;
-import restaurant.Sandwich.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-
-import Restaurant.*;
 import org.junit.jupiter.api.Test;
+import restaurant.Kitchen;
+import restaurant.Register;
+import restaurant.Sandwich;
+import restaurant.Sandwich.Bread;
+import restaurant.Sandwich.Meat;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RestaurantTest {
 	

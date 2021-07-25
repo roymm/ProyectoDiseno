@@ -1,12 +1,14 @@
 /**
  * @author Carlos Espinoza B92786
- *            Fabiola Jimenez B23452
- *            Sebastián Montero B95016
- *            Kendall Lara B43707
- *            Roy Muñoz B54911
- *            Maria Jesús B98243
+ * Fabiola Jimenez B23452
+ * Sebastián Montero B95016
+ * Kendall Lara B43707
+ * Roy Muñoz B54911
+ * Maria Jesús B98243
  */
 package securitysystem;
+
+import securitysystem.decorators.IAccessCard;
 
 public class Person {
     private int idNumber;
@@ -21,13 +23,11 @@ public class Person {
         this.card = card;
     }
 
-    public int getIdNumber()
-    {
+    public int getIdNumber() {
         return idNumber;
     }
 
-    public IAccessCard getAccesCard()
-    {
+    public IAccessCard getAccesCard() {
         return this.card;
     }
 }

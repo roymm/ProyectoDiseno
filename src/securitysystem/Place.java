@@ -9,6 +9,8 @@
 package securitysystem;
 
 
+import securitysystem.decorators.AccessLevel;
+
 public class Place {
     private final AccessLevel accessLevel;
     public String name;
